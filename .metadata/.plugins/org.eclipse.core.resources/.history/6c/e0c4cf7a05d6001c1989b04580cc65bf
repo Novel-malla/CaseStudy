@@ -1,0 +1,43 @@
+package com.novel.service;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.novel.ProfileRepository;
+import com.novel.UserProfile;
+
+public class ProfileServiceImpl implements ProfileService {
+	
+	@Autowired
+	UserProfile userProfile;
+	
+	@Autowired
+	private ProfileRepository profileRepository;
+	
+	public UserProfile addNewCustomerProfile(UserProfile userProfile) {
+		userProfile.setAbout("Tall");
+		userProfile.setFullName("Novel Malla");
+		userProfile.setProfileId("1");
+		userProfile.setMobileNumber(123456789);
+		userProfile.setGender("Male");
+		userProfile.setEmailId("nv@gm.com");
+		userProfile.setDateOfBirth(LocalDate.of(1999, 9, 17));
+		return userProfile;
+	}
+
+	@Override
+	public List<UserProfile> getAllProfiles() {
+		List<UserProfile> userProfile = profileRepository.findAll();
+		System.out.println("All profiles = " + userProfile);
+		return userProfile;
+	}
+
+	@Override
+	public void deleteProfile(String profileId) {
+		profileRepository.deleteById(profileId);;
+	}
+	
+}

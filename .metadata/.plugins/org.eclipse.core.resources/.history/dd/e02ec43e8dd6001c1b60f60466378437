@@ -1,0 +1,32 @@
+package com.novel.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.novel.model.UserProfile;
+import com.novel.repository.ProfileRepository;
+
+public class ProfileServiceImpl implements ProfileService {
+	
+	@Autowired
+	UserProfile userProfile;
+	
+	@Autowired
+	private ProfileRepository profileRepository;
+	
+	public UserProfile addNewCustomerProfile(UserProfile userProfile) {
+		return profileRepository.save(userProfile);
+	}
+
+	@Override
+	public List<UserProfile> getAllProfiles() {
+		return profileRepository.findAll();	
+	}
+
+	@Override
+	public void deleteProfile(String profileId) {
+		profileRepository.deleteById(profileId);;
+	}
+	
+}

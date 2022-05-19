@@ -1,0 +1,3 @@
+server.port=8081
+spring.application.name=PROFILE-SERVICE
+spring.data.mongodb.uri=mongodb+srv://root:root@shoppingcartdatabase.uajyr.mongodb.net/test

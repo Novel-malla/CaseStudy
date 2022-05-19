@@ -1,0 +1,15 @@
+package com.novel.service;
+
+import java.util.List;
+
+import com.novel.model.Cart;
+
+public interface CartService {
+
+	public Cart getCartById(String cartId);
+	
+	public List<Cart> getAllCarts();
+	
+	public Cart addCart(Cart cart);
+	
+}

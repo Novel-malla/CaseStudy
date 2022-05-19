@@ -1,0 +1,37 @@
+package com.novel.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.novel.model.UserProfile;
+import com.novel.repository.ProfileRepository;
+
+@RestController
+@RequestMapping("/shoppingcart/profiles")
+public class UserController {
+	
+	@Autowired
+	private ProfileRepository profileRepository;
+	
+	@PostMapping("/add")
+	public UserProfile addNewCustomerProfile(UserProfile userProfile) {
+		return profileRepository.save(userProfile);
+	}
+	
+	@GetMapping("/all")
+	public List<UserProfile> getAllProfiles() {
+		return profileRepository.findAll();	
+	}
+	
+	@RequestMapping(value = "/delete/{profileId}", method = RequestMethod.DELETE)
+	public void deleteProfile(String profileId) {
+		profileRepository.deleteById(profileId);;
+	}
+	
+}
