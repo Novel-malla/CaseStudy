@@ -14,13 +14,13 @@ public class CartServiceImpl implements CartService{
 	private CartRepository cartRepository;
 
 	@Override
-	public Cart getCartByUserId(int id) {
-		return this.cartRepository.getCartByUserId(id);
+	public Cart getCartByUserId(int cartId) {
+		return this.cartRepository.getCartByUserId(cartId);
 	}
 
 	@Override
-	public void deleteById(int id) {
-		this.cartRepository.deleteById(id);
+	public void deleteById(int cartId) {
+		this.cartRepository.deleteById(cartId);
 	}
 
 	@Override
@@ -29,8 +29,8 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public Cart getCartByProductId(int id) {
-		return this.cartRepository.findById(id).get();
+	public Cart getCartByProductId(int productId) {
+		return this.cartRepository.findById(productId).get();
 	}
 
 	@Override

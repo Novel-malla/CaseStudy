@@ -1,8 +1,10 @@
 package com.novel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import com.novel.model.Cart;
 import com.novel.service.CartService;
@@ -13,10 +15,14 @@ public class CartController  {
 
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 
 	@PostMapping("/add")
-	public Cart addCartById(@RequestBody Cart cart) {
-		return this.cartService.addCart(cart);
+	public ResponseEntity<String> addCartById(@RequestBody Cart cart) {
+		cartService.addCart(cart);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@GetMapping("/get")
@@ -29,14 +35,14 @@ public class CartController  {
 		return this.cartService.getCartByUserId(userId);
 	}
 
-	@GetMapping("/get/{id}")
-	public Cart getCartById(@PathVariable("id") int id) {
-		return this.cartService.getCartByProductId(id);
+	@GetMapping("/get/{cartId}")
+	public Cart getCartById(@PathVariable("cartId") int cartId) {
+		return this.cartService.getCartByProductId(cartId);
 	}
 
-	@DeleteMapping("/del/{id}")
-	public int deleteById(@PathVariable("id") int id) {
-		this.cartService.deleteById(id);
-		return id;
+	@DeleteMapping("get/del/{cartId}")
+	public int deleteById(@PathVariable("cartId") int cartId) {
+		this.cartService.deleteById(cartId);
+		return cartId;
 	}
 }

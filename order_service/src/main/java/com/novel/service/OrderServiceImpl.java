@@ -17,8 +17,6 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	RestTemplate restTemplate;
 
-
-
 	@Override
 	public Order addOrder(Order order) {
 		return this.orderRepository.save(order);

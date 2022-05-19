@@ -39,9 +39,9 @@ public class UserController {
 	}
 
 	@GetMapping("/get")
-	public List<UserProfile> findAllUsers() {
+	public ResponseEntity<?> findAllUsers() {
 		logger.info("Inside Profile of UserProfileController");
-		return profileService.getUsers();
+		return ResponseEntity.ok(this.profileService.getUsers());
 	}
 
 
@@ -50,13 +50,13 @@ public class UserController {
 		return ResponseEntity.ok(this.profileService.getByProfileId(id));
 	}
 
-	@PutMapping("/update")
+	@PutMapping("/get/update")
 	public UserProfile updateUser(@RequestBody UserProfile userProfile) {
 		return this.profileService.updateProfile(userProfile);
 	}
 
 
-	@DeleteMapping("/del/{id}")
+	@DeleteMapping("/get/del/{id}")
 	public int deleteUser(@PathVariable Integer id) {
 		this.profileService.deleteProfile(id);
 		return id;

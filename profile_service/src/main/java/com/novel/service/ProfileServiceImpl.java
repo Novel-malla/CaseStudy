@@ -20,9 +20,7 @@ public class ProfileServiceImpl implements ProfileService {
 
 	@Override
 	public List<UserProfile> getUsers() {
-		List<UserProfile> profile = profileRepository.findAll();
-		System.out.println(" " + profile);
-		return profile;
+		return this.profileRepository.findAll();
 	}
 
 	@Override

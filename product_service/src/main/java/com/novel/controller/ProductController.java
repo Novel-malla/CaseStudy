@@ -25,19 +25,20 @@ public class ProductController {
 	private ProductService productService;
 
 	@PostMapping("/add")
-	public void addProducts(@RequestBody Product product) {
+	public ResponseEntity<String> addProducts(@RequestBody Product product) {
 		productService.addProducts(product);
+		return new ResponseEntity<>(HttpStatus.OK);
 
 	}
 
-	@GetMapping("/all")
+	@GetMapping("/getproducts")
 	public ResponseEntity<List<Product>> getAllProducts() {
 		List<Product> products = productService.getAllProducts();
 		return new ResponseEntity<>(products, HttpStatus.OK);
 
 	}
 
-	@GetMapping("/{productId}")
+	@GetMapping("/getproducts/{productId}")
 	public ResponseEntity<Product> getProductById(@PathVariable int productId) {
 
 		Optional<Product> product = productService.getProductById(productId);
@@ -48,14 +49,14 @@ public class ProductController {
 		return new ResponseEntity<>(product.get(), HttpStatus.OK);
 	}
 
-	@GetMapping("/type/{productType}")
+	@GetMapping("/getproducts/type/{productType}")
 	public ResponseEntity<List<Product>> getProductByType(@PathVariable String productType) {
 
 		List<Product> product = productService.getProductByType(productType);
 		return new ResponseEntity<>(product, HttpStatus.OK);
 	}
 
-	@GetMapping("/productName/{productName}")
+	@GetMapping("/getproducts/productName/{productName}")
 	public ResponseEntity<Product> getProductByName(@PathVariable String productName) {
 
 		Optional<Product> product = productService.getProductByName(productName);
@@ -65,7 +66,7 @@ public class ProductController {
 		return new ResponseEntity<>(product.get(), HttpStatus.OK);
 	}
 
-	@GetMapping("/category/{category}")
+	@GetMapping("/getproducts/category/{category}")
 	public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String category) {
 
 		List<Product> product = productService.getProductByCategory(category);
@@ -73,7 +74,7 @@ public class ProductController {
 		return new ResponseEntity<>(product, HttpStatus.OK);
 	}
 
-	@PutMapping("/update")
+	@PutMapping("/getproducts/update")
 	public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
 
 		Product updatedProduct = productService.updateProducts(product);
@@ -81,11 +82,10 @@ public class ProductController {
 
 	}
 
-	@DeleteMapping("/{productId}")
-	public void deleteProduct(@PathVariable int productId) {
-		Optional<Product> product = productService.getProductById(productId);
-		productService.deleteProductById(productId);
-
+	@DeleteMapping("/getproducts/delete/{productId}")
+	public int deleteProduct(@PathVariable int productId) {
+		this.productService.deleteProductById(productId);
+		return productId;
 	}
 
 }

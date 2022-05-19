@@ -7,7 +7,7 @@ import com.novel.model.Product;
 
 public interface ProductService {
 
-	void addProducts(Product product);
+	Product addProducts(Product product);
 
 	List<Product> getAllProducts();
 

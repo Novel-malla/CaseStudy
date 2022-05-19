@@ -6,17 +6,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Cart")
 public class Cart {
 	@Id
-	private String cartId;
+	private int cartId;
 	private int productId;
 	private String productName;
 	private int userId;
 	private int quantity;
 	private int price;
 
-	public String getCartId() {
+	public int getCartId() {
 		return cartId;
 	}
-	public void setCartId(String cartId) {
+	public void setCartId(int cartId) {
 		this.cartId = cartId;
 	}
 	public int getPrice() {
@@ -50,7 +50,7 @@ public class Cart {
 		this.quantity = quantity;
 	}
 
-	public Cart(String cartId, int productId, String productName, int userId, int quantity, int price) {
+	public Cart(int cartId, int productId, String productName, int userId, int quantity, int price) {
 		this.cartId = cartId;
 		this.productId = productId;
 		this.productName = productName;
