@@ -1,5 +1,7 @@
 package com.novel.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
- import com.novel.model.Order;
+
+import com.novel.model.Address;
+import com.novel.model.Order;
  import com.novel.service.OrderService;
 @RestController
 @RequestMapping("/order")
@@ -37,12 +41,12 @@ public class OrderController {
 	}
 
 	@GetMapping("/getorders/ordercustid/{customerId}")
-	public Order getOrderByCustomerId(@PathVariable int customerId) {
+	public List<Order> getOrderByCustomerId(@PathVariable int customerId) {
 		return this.orderService.getOrderByCustomerId(customerId);
 	}
 
 	@GetMapping("/getorders/address/{customerId}")
-	public Order getAddressByCustomerId(@PathVariable int customerId) {
+	public List<Address> getAddressByCustomerId(@PathVariable int customerId) {
 		return this.orderService.getAddressByCustomerId(customerId);
 	}
 

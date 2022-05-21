@@ -6,13 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.novel.model.Address;
 import com.novel.model.Order;
+import com.novel.repository.AddressRepository;
 import com.novel.repository.OrderRepository;
 @Service
 public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private OrderRepository orderRepository;
+	
+	@Autowired
+	private AddressRepository addressRepository;
 
 	@Autowired
 	RestTemplate restTemplate;
@@ -35,14 +40,14 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order getOrderByCustomerId(int customerId) {
-		return this.orderRepository.findById(customerId).get();
+	public List<Order> getOrderByCustomerId(int customerId) {
+		return this.orderRepository.findByCustomerId(customerId);
 	}
 
 
 	@Override
-	public Order getAddressByCustomerId(int customerId) {
-		return this.orderRepository.findById(customerId).get();
+	public List<Address> getAddressByCustomerId(int customerId) {
+		return this.addressRepository.findAddressByCustomerId(customerId);
 	}
 
 
