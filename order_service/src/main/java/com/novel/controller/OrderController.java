@@ -36,22 +36,22 @@ public class OrderController {
 	}
 
 	@GetMapping("/getorders/{orderId}")
-	public Order getOrderById(@PathVariable int orderId) {
+	public Order getOrderById(@PathVariable("orderId") int orderId) {
 		return this.orderService.getOrderById(orderId);
 	}
 
 	@GetMapping("/getorders/ordercustid/{customerId}")
-	public List<Order> getOrderByCustomerId(@PathVariable int customerId) {
+	public List<Order> getOrderByCustomerId(@PathVariable("customerId") int customerId) {
 		return this.orderService.getOrderByCustomerId(customerId);
 	}
 
 	@GetMapping("/getorders/address/{customerId}")
-	public List<Address> getAddressByCustomerId(@PathVariable int customerId) {
+	public List<Address> getAddressByCustomerId(@PathVariable("customerId") int customerId) {
 		return this.orderService.getAddressByCustomerId(customerId);
 	}
 
 	@DeleteMapping("/getorders/delete/{orderId}")
-	public int deleteOrderById(@PathVariable int orderId) {
+	public int deleteOrderById(@PathVariable("orderId") int orderId) {
 		this.orderService.deleteOrder(orderId);
 		return orderId;
 	}

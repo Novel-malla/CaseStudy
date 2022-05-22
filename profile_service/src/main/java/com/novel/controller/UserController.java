@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +26,6 @@ import com.novel.service.ProfileService;
 @RequestMapping("/profile")
 public class UserController {
 
-	final Logger logger= LoggerFactory.getLogger(UserController.class);
-
 	@Autowired
 	private ProfileService profileService;
 
@@ -34,19 +33,19 @@ public class UserController {
 	private RestTemplate restTemplate;
 
 	@PostMapping("/add")
-	public UserProfile addUser(@RequestBody UserProfile userProfile) {
-		return this.profileService.addNewUser(userProfile);
+	public ResponseEntity<String> addUser(@RequestBody UserProfile userProfile) {
+		profileService.addNewUser(userProfile);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@GetMapping("/get")
 	public ResponseEntity<?> findAllUsers() {
-		logger.info("Inside Profile of UserProfileController");
 		return ResponseEntity.ok(this.profileService.getUsers());
 	}
 
 
 	@GetMapping("/get/{id}")
-	public ResponseEntity<?> getProfilebyid(@PathVariable Integer id) {
+	public ResponseEntity<?> getProfilebyid(@PathVariable("id") Integer id) {
 		return ResponseEntity.ok(this.profileService.getByProfileId(id));
 	}
 
@@ -57,7 +56,7 @@ public class UserController {
 
 
 	@DeleteMapping("/get/del/{id}")
-	public int deleteUser(@PathVariable Integer id) {
+	public int deleteUser(@PathVariable("id") Integer id) {
 		this.profileService.deleteProfile(id);
 		return id;
 	}

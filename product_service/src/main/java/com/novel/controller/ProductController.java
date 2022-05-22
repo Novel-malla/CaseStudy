@@ -32,14 +32,14 @@ public class ProductController {
 	}
 
 	@GetMapping("/getproducts")
-	public ResponseEntity<List<Product>> getAllProducts() {
-		List<Product> products = productService.getAllProducts();
-		return new ResponseEntity<>(products, HttpStatus.OK);
+	public ResponseEntity<Product> getAllProducts() {
+		productService.getAllProducts();
+		return new ResponseEntity<>(HttpStatus.OK);
 
 	}
 
 	@GetMapping("/getproducts/{productId}")
-	public ResponseEntity<Product> getProductById(@PathVariable int productId) {
+	public ResponseEntity<Product> getProductById(@PathVariable("productId") int productId) {
 
 		Optional<Product> product = productService.getProductById(productId);
 		if (!product.isPresent()) {
@@ -50,14 +50,14 @@ public class ProductController {
 	}
 
 	@GetMapping("/getproducts/type/{productType}")
-	public ResponseEntity<List<Product>> getProductByType(@PathVariable String productType) {
+	public ResponseEntity<List<Product>> getProductByType(@PathVariable("productType") String productType) {
 
 		List<Product> product = productService.getProductByType(productType);
 		return new ResponseEntity<>(product, HttpStatus.OK);
 	}
 
 	@GetMapping("/getproducts/productName/{productName}")
-	public ResponseEntity<Product> getProductByName(@PathVariable String productName) {
+	public ResponseEntity<Product> getProductByName(@PathVariable("productName") String productName) {
 
 		Optional<Product> product = productService.getProductByName(productName);
 		if (!product.isPresent()) {
@@ -67,7 +67,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/getproducts/category/{category}")
-	public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String category) {
+	public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable("category") String category) {
 
 		List<Product> product = productService.getProductByCategory(category);
 
@@ -83,7 +83,7 @@ public class ProductController {
 	}
 
 	@DeleteMapping("/getproducts/delete/{productId}")
-	public int deleteProduct(@PathVariable int productId) {
+	public int deleteProduct(@PathVariable("productId") int productId) {
 		this.productService.deleteProductById(productId);
 		return productId;
 	}
