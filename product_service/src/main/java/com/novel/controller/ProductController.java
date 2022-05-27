@@ -32,9 +32,8 @@ public class ProductController {
 	}
 
 	@GetMapping("/getproducts")
-	public ResponseEntity<Product> getAllProducts() {
-		productService.getAllProducts();
-		return new ResponseEntity<>(HttpStatus.OK);
+	public ResponseEntity<?> getAllProducts() {
+		return ResponseEntity.ok(this.productService.getAllProducts());
 
 	}
 

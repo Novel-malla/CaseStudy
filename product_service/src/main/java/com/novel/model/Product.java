@@ -1,9 +1,5 @@
 package com.novel.model;
 
-import java.util.List;
-
-import java.util.Map;
-
 import org.springframework.data.annotation.Id;
 
 public class Product {
@@ -12,13 +8,13 @@ public class Product {
 	private String productType;
 	private String productName;
 	private String category;
-	private Map<Integer, Double> rating;
-	private Map<Integer, String> review;
-	private List<String> image;
+	private String rating;
+	private String review;
+	private String image;
 	private double price;
 	private String description;
-	private Map<String, String> specification;
-	public Product(int productId, String productType, String productName, String category, Map<Integer, Double> rating, Map<Integer, String> review, List<String> image, double price, String description, Map<String, String> specification)
+	private String specification;
+	public Product(int productId, String productType, String productName, String category, String rating, String review, String image, double price, String description, String specification)
 	{
 		super();
 		this.productId = productId;
@@ -83,27 +79,27 @@ public class Product {
 		this.category = category;
 	}
 
-	public Map<Integer, Double> getRating() {
+	public String getRating() {
 		return rating;
 	}
 
-	public void setRating(Map<Integer, Double> rating) {
+	public void setRating(String rating) {
 		this.rating = rating;
 	}
 
-	public Map<Integer, String> getReview() {
+	public String getReview() {
 		return review;
 	}
 
-	public void setReview(Map<Integer, String> review) {
+	public void setReview(String review) {
 		this.review = review;
 	}
 
-	public List<String> getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(List<String> image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -123,11 +119,11 @@ public class Product {
 		this.description = description;
 	}
 
-	public Map<String, String> getSpecification() {
+	public String getSpecification() {
 		return specification;
 	}
 
-	public void setSpecification(Map<String, String> specification) {
+	public void setSpecification(String specification) {
 		this.specification = specification;
 	}
 

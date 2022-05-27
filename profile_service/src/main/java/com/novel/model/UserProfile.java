@@ -11,10 +11,12 @@ public class UserProfile {
 	private String email;
 	private Long mobileNumber;
 	private String about;
-	private int dateOfBirth;
+	private String dateOfBirth;
 	private String gender;
 	private String role;
 	private String password;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -45,10 +47,10 @@ public class UserProfile {
 	public void setAbout(String about) {
 		this.about = about;
 	}
-	public int getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(int dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getGender() {
@@ -69,7 +71,7 @@ public class UserProfile {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public UserProfile(int id, String fullName, String email, Long mobileNumber, String about, int dateOfBirth,
+	public UserProfile(int id, String fullName, String email, Long mobileNumber, String about, String dateOfBirth,
 					  String gender, String role, String password) {
 		super();
 		this.id = id;

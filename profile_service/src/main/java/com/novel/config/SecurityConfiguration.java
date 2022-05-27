@@ -1,46 +1,46 @@
-package com.novel.config;
-
-import java.util.Arrays;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-@EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        //set your configuration on the auth object
-
-        auth.inMemoryAuthentication()
-            .withUser("Onkar")
-            .password("mentor")
-            .roles("ADMIN");
-    }
-
-    @Bean
-    public PasswordEncoder getPasswordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests()
-            .antMatchers("/swagger-ui.html").hasRole("ADMIN")
-            .antMatchers("/").permitAll()
-            .and().formLogin();
-            // .and().cors().configurationSource(corsConfigurationSource())
-            // .and().csrf().disable();
-    }
+//package com.novel.config;
+//
+//import java.util.Arrays;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+//import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+//import org.springframework.web.cors.CorsConfiguration;
+//import org.springframework.web.cors.CorsConfigurationSource;
+//import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+//
+//@EnableWebSecurity
+//public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+//        //set your configuration on the auth object
+//
+//        auth.inMemoryAuthentication()
+//            .withUser("Onkar")
+//            .password("mentor")
+//            .roles("ADMIN");
+//    }
+//
+//    @Bean
+//    public PasswordEncoder getPasswordEncoder(){
+//        return NoOpPasswordEncoder.getInstance();
+//    }
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception{
+//        http.authorizeRequests()
+//            .antMatchers("/swagger-ui.html").hasRole("ADMIN")
+//            .antMatchers("/").permitAll()
+//            .and().formLogin();
+//            // .and().cors().configurationSource(corsConfigurationSource())
+//            // .and().csrf().disable();
+//    }
 
     // @Bean
     // CorsConfigurationSource corsConfigurationSource() {
@@ -53,4 +53,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     //     source.registerCorsConfiguration("/**", configuration);
     //     return source;
     // }
-}
+//}

@@ -42,7 +42,7 @@ public class ProfileServiceApplication {
 	@Bean
 	public OpenAPI swaggerApiInfoConfig(){
 		return new OpenAPI()
-		.info(new Info().title("Cart Microservice")
+		.info(new Info().title("Profile Microservice")
 		.description("Java Rest API Microservice Application")
 		.license(new License().name("GitHub").url("https://github.com/Novel-malla/CaseStudy")));
 	}

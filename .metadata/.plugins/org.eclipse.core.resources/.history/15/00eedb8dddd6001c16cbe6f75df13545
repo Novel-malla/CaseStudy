@@ -1,5 +1,0 @@
-server.port=8082
-spring.application.name=PRODUCT-SERVICE
-spring.data.mongodb.uri=mongodb+srv://root:root@shoppingcartdatabase.uajyr.mongodb.net/test
-spring.data.mongodb.database=shoppingcartDatabase
-
