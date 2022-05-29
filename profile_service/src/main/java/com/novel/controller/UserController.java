@@ -2,6 +2,9 @@ package com.novel.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import com.novel.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,9 +28,9 @@ public class UserController {
 	private ProfileService profileService;
 
 	@PostMapping("/add")
-	public ResponseEntity<String> addUser(@RequestBody UserProfile userProfile) {
+	public ResponseEntity<String> addUser(@Valid @RequestBody UserProfile userProfile) {
 		profileService.addNewUser(userProfile);
-		return new ResponseEntity<>(HttpStatus.OK);
+		return ResponseEntity.ok("User is valid");
 	}
 
 	@GetMapping("/get")

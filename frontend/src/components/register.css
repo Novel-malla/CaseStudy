@@ -17,7 +17,7 @@ body{
 .container{
     align-items: center;
     position: static;
-    background: white;
+    background: linear-gradient(90deg, rgb(251, 252, 253), silver);
     padding: 60px 0px;
     width: 500px;
     justify-content: space-between;

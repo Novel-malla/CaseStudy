@@ -3,14 +3,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(90deg, rgb(251, 252, 253), silver);
 }
 
 .loginBox {
-    background-color: rgb(255, 255, 255);
+    background-color: linear-gradient(90deg, rgb(251, 252, 253), silver);
     margin-top: 20px;
     height: 500px;
     width: 500px;
-    border: 1px solid rgb(255, 255, 255);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -18,16 +18,12 @@
     justify-content: center;
 }
 
-.emailInput, .passInput {
+input {
     width: 350px;
     margin: 10px;
     padding: 30px;
     border-radius: 15px;
     border: 1px solid gray;
-}
-
-.passInput {
-    margin-top: 10px;
 }
 
 .loginPageBtn {

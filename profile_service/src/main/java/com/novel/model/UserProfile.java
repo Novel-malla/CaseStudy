@@ -1,5 +1,7 @@
 package com.novel.model;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,13 +9,29 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserProfile {
 	@Id
 	private int id;
+	
+	@NotBlank(message = "Name is mandatory")
 	private String fullName;
+	
+	@NotBlank(message = "Email is mandatory")
 	private String email;
-	private Long mobileNumber;
+	
+	@NotBlank(message = "Number is mandatory")
+	private String mobileNumber;
+	
+	@NotBlank(message = "About is mandatory")
 	private String about;
+	
+	@NotBlank(message = "DOB is mandatory")
 	private String dateOfBirth;
+	
+	@NotBlank(message = "Gender is mandatory")
 	private String gender;
+	
+	@NotBlank(message = "Role is mandatory")
 	private String role;
+	
+	@NotBlank(message = "Password is mandatory")
 	private String password;
 	
 	
@@ -35,10 +53,10 @@ public class UserProfile {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Long getMobileNumber() {
+	public String getMobileNumber() {
 		return mobileNumber;
 	}
-	public void setMobileNumber(Long mobileNumber) {
+	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 	public String getAbout() {
@@ -71,7 +89,7 @@ public class UserProfile {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public UserProfile(int id, String fullName, String email, Long mobileNumber, String about, String dateOfBirth,
+	public UserProfile(int id, String fullName, String email, String mobileNumber, String about, String dateOfBirth,
 					  String gender, String role, String password) {
 		super();
 		this.id = id;
