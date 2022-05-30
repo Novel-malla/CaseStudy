@@ -2,12 +2,13 @@ import './App.css';
 import {Router, Switch} from 'react-router-dom';
 import Register from './components/register';
 import Login from './components/login';
+import ValidatedLoginForm from './components/login';
 
 function App() {
   return (
     <div className="App">
       
-      <Login/>
+      <Register/>
       
     </div>
   );

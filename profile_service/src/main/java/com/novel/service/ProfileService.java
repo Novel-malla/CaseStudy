@@ -38,8 +38,8 @@ public class ProfileService{
 		return profileRepository.findById(id).get();
 	}
 
-	public List<UserProfile> getByName(String fullName) {
-		return (List<UserProfile>) profileRepository.findByFullName(fullName);
+	public UserProfile getByName(String fullName) {
+		return profileRepository.findByFullName(fullName);
 	}
 
 

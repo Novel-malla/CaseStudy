@@ -1,10 +1,10 @@
 import React from 'react'
-import './register.css'
+import '../styles/register.css'
 
 const Register = ({handleLogIn}) => {
   return (
-    <div className='container'>
-        <div class="container">
+    <div className='register-container'>
+        <div class="register-container">
             <header>REGISTER</header>
             <form method="post">
             <div className="input-field">

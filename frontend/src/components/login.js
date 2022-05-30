@@ -1,73 +1,91 @@
 import React from 'react'
-import './Login.css';
+import '../styles/Login.css';
 import { Formik } from "formik";
 import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
 
-const Login = () => (
-  <Formik
-    initialValues={{ email: "", password: "" }}
-    onSubmit={(values, { setSubmitting }) => {
-      setTimeout(() => {
-        console.log("Logging in", values);
-        setSubmitting(false);
-      }, 500);
-    }}
-  >
+const ValidatedLoginForm = () => (
+<Formik
+initialValues={{ email: "", password: "" }}
+onSubmit={(values, { setSubmitting }) => {
+setTimeout(() => {
+console.log("Logging in", values);
+setSubmitting(false);
+}, 500);
+}}>
+
+validate={values => {
+    let errors = {};
+    if (!values.email) {
+      errors.email = "Required";
+    } else if (!EmailValidator.validate(values.email)) {
+      errors.email = "Invalid email address.";
+    }
+
+    const passwordRegex = /(?=.*[0-9])/;
+    if (!values.password) {
+      errors.password = "Required";
+    } else if (values.password.length < 8) {
+      errors.password = "Password must be 8 characters long.";
+    } else if (!passwordRegex.test(values.password)) {
+      errors.password = "Invalid password. Must contain one number.";
+    }
+
+    return errors;
+  }}
 
 {props => {
-  const {
-    values,
-    touched,
-    errors,
-    isSubmitting,
-    handleChange,
-    handleBlur,
-    handleSubmit
-  } = props;
+      const {
+        values,
+        touched,
+        errors,
+        isSubmitting,
+        handleChange,
+        handleBlur,
+        handleSubmit
+      } = props;
 
-  return (
-    <div className='container'>
-      <form onSubmit={handleSubmit}>
-      <h1 style={{textAlign: 'center', fontWeight: 'lighter', marginTop: '20px'}}>LOGIN</h1>
-      <div className='loginBox'>
-        <input 
-        id='emailInput' 
-        placeholder='Enter your Email ID' 
-        name='email' 
-        type='text'
-        value={values.email}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        className={errors.email && touched.email && "error"}
-        />
-        {errors.email && touched.email && (
-          <div className="input-feedback">{errors.email}</div>
-        )}
-        
-        <input 
-        id='passInput' 
-        placeholder='Enter Password' 
-        type='password' 
-        name='password'
-        value={values.password}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        className={errors.password && touched.password && "error"}
-        />
-        {errors.password && touched.password && (
-          <div className="input-feedback">{errors.password}</div>
-        )}
+  return (    
+    <div class='container'> 
+    <form onSubmit={handleSubmit}>
 
-        <button 
-        className="loginPageBtn" 
-        type='submit' 
-        disabled={isSubmitting}>Log In</button>
-      </div>
-      </form>
+    <label htmlFor="email">Email</label>
+    <input
+      id="email"
+      name="email"
+      type="text"
+      placeholder="Enter your email"
+      value={values.email}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      className={errors.email && touched.email && "error"}/>
+      {errors.email && touched.email && (
+        <div className="input-feedback">{errors.email}</div>
+      )}
+
+    <label htmlFor="password">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      placeholder="Enter your password"
+      value={values.password}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      className={errors.password && touched.password && "error"}/>
+      {errors.password && touched.password && (
+        <div className="input-feedback">{errors.password}</div>
+      )}
+
+    <button type="submit" disabled={isSubmitting}>
+      Login
+    </button>
+
+  </form>
     </div>
-  )}}
+  );
+}}
   </Formik>
-)
+);
 
-export default Login
+export default ValidatedLoginForm
