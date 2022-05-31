@@ -1,12 +1,9 @@
 package com.novel.service;
 
-import java.lang.runtime.ObjectMethods;
 import java.util.Objects;
 
 import com.novel.model.dbSequence;
 
-import static org.springframework.data.mongodb.core.query.Query.*;
-import static org.springframework.data.mongodb.core.query.Criteria.*;
 import static org.springframework.data.mongodb.core.FindAndModifyOptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;

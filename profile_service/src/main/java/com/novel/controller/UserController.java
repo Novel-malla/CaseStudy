@@ -78,11 +78,11 @@ public class UserController {
 	public ResponseEntity<UserProfile> updateUser(@PathVariable("fullName") String fullName, @RequestBody UserProfile userProfile) throws Exception {
 		UserProfile userProfile1 = profileService.getByName(fullName);
 		if (userProfile1 != null) {
-			UserProfile userProfile2 = profileService.addNewUser(userProfile);
+			UserProfile userProfile2 = profileService.updateProfile(userProfile1);
 			return new ResponseEntity<>(userProfile2, HttpStatus.CREATED);
 		}
 		else {
-			throw new UserNotFound(fullName + "not found");
+			throw new UserNotFound(fullName + " not found");
 	}
 	}
 

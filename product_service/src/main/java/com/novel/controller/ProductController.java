@@ -2,6 +2,9 @@ package com.novel.controller;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.novel.model.Product;
 import com.novel.service.ProductService;
+import com.novel.service.SequenceGenerator;
 
 
 @RestController
@@ -23,11 +27,15 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private SequenceGenerator service;
 
 	@PostMapping("/add")
-	public ResponseEntity<String> addProducts(@RequestBody Product product) {
+	public ResponseEntity<String> addProducts(@Valid @RequestBody Product product) {
+		product.setProductId(service.getSequenceNumber(Product.SEQUENCE_NAME));
 		productService.addProducts(product);
-		return new ResponseEntity<>(HttpStatus.OK);
+		return ResponseEntity.ok("User is valid");
 
 	}
 

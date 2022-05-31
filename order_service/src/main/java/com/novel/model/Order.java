@@ -1,24 +1,42 @@
 package com.novel.model;
 
-import java.time.LocalDate;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Document(collection = "Order")
 public class Order {
+	
+	@Transient
+	public static final String SEQUENCE_NAME = "orders_sequence";
+	
 	@Id
 	private int orderId;
+	@NotBlank
 	private String orderDate;
+	@NotNull
 	private int customerId;
+	@NotNull
 	private Double amountPaid;
+	@NotBlank
 	private String modeOfPayment;
+	@NotBlank
 	private String orderStatus;
+	@NotNull
 	private int quantity;
+	
 	private Address address;
+	
 	private Product product;
 
+	public static String getSequenceName() {
+		return SEQUENCE_NAME;
+	}
+	
 	public Product getProduct() {
 		return product;
 	}

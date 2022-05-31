@@ -1,20 +1,37 @@
 package com.novel.model;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 public class Product {
+	
+	@Transient
+	public static final String SEQUENCE_NAME = "products_sequence";
+	
 	@Id
 	private int productId;
+	@NotBlank
 	private String productType;
+	@NotBlank
 	private String productName;
+	@NotBlank
 	private String category;
+	@NotBlank
 	private String rating;
+	@NotBlank
 	private String review;
+	@NotBlank
 	private String image;
-	private double price;
+	@NotBlank
+	private String price;
+	@NotBlank
 	private String description;
+	@NotBlank
 	private String specification;
-	public Product(int productId, String productType, String productName, String category, String rating, String review, String image, double price, String description, String specification)
+	
+	public Product(int productId, String productType, String productName, String category, String rating, String review, String image, String price, String description, String specification)
 	{
 		super();
 		this.productId = productId;
@@ -45,6 +62,10 @@ public class Product {
 				", description='" + description + '\'' +
 				", specification=" + specification +
 				'}';
+	}
+	
+	public static String getSequenceName() {
+		return SEQUENCE_NAME;
 	}
 
 	public int getProductId() {
@@ -103,11 +124,11 @@ public class Product {
 		this.image = image;
 	}
 
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 

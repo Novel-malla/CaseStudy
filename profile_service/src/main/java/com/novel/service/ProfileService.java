@@ -27,7 +27,16 @@ public class ProfileService{
 	}
 
 	public UserProfile updateProfile(UserProfile userProfile) {
-		return profileRepository.save(userProfile);
+		UserProfile user2 = profileRepository.findByFullName(userProfile.getFullName());
+		user2.setFullName(userProfile.getFullName());
+		user2.setAbout(userProfile.getAbout());
+		user2.setDateOfBirth(userProfile.getDateOfBirth());
+		user2.setEmail(userProfile.getEmail());
+		user2.setGender(userProfile.getGender());
+		user2.setMobileNumber(userProfile.getMobileNumber());
+		user2.setRole(userProfile.getRole());
+		user2.setPassword(userProfile.getPassword());
+		return profileRepository.save(user2);
 	}
 
 	public UserProfile addNewUser(UserProfile userProfile) {
