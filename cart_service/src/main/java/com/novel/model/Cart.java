@@ -1,17 +1,34 @@
 package com.novel.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Cart")
 public class Cart {
+	
+	@Transient // ignoring the field ( only work & doesnt save)
+	public static final String SEQUENCE_NAME = "carts_sequence";
+	
 	@Id
 	private int cartId;
+	@NotNull
 	private int productId;
+	@NotBlank
 	private String productName;
+	@NotNull
 	private int userId;
+	@NotNull
 	private int quantity;
+	@NotNull
 	private int price;
+	
+	public static String getSequenceName() {
+		return SEQUENCE_NAME;
+	}
 
 	public int getCartId() {
 		return cartId;

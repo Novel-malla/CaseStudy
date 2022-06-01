@@ -1,13 +1,14 @@
 package com.novel.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-
 import com.novel.model.Cart;
 import com.novel.service.CartService;
+import com.novel.service.SequenceGenerator;
 
 @RestController
 @RequestMapping("/cart")
@@ -17,10 +18,11 @@ public class CartController  {
 	private CartService cartService;
 	
 	@Autowired
-	private RestTemplate restTemplate;
+	private SequenceGenerator service;
 
 	@PostMapping("/add")
-	public ResponseEntity<String> addCartById(@RequestBody Cart cart) {
+	public ResponseEntity<String> addCartById(@Valid @RequestBody Cart cart) {
+		cart.setCartId(service.getSequenceNumber(Cart.SEQUENCE_NAME));
 		cartService.addCart(cart);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

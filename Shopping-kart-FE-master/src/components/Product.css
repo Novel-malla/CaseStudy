@@ -1,7 +1,7 @@
 .product {
-	display: flex;
+	/*display: flex;
 	flex-direction: column;
-	background-color: #59948f;
+	background-color: rgb(165, 21, 1);
 	align-items: center;
 	justify-content: flex-end;
 	margin: 10px;
@@ -10,9 +10,15 @@
 	max-height: 400px;
 	min-width: 500px;
 	z-index: 1;
-	border-radius: 20px;
-
-	
+	border-radius: 50px;*/
+	overflow: hidden;
+	width: 100%; 
+	max-width: 24rem; 
+	border-radius: 0.375rem; 
+	cursor: pointer; 
+	padding: 25px;
+	box-shadow:-6px 7px 6px -1px rgb(0 0 0 / 10%), -3px 6px 4px -1px rgb(0 0 0 / 6%);
+	border-color: grey whitesmoke;
 }
 
 .product > img {

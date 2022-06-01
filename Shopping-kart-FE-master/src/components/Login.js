@@ -12,7 +12,7 @@ const Login = () => {
     <div className='container'>
       <h1 style={{textAlign: 'center', fontWeight: 'heavy', marginTop: '10px'}}>Login</h1>
       <div className='loginBox'>
-      <div className="header">
+      {/* <div className="header">
 			<Link to="/">
 				<img
 					className="LoginLogo"
@@ -20,9 +20,9 @@ const Login = () => {
 					alt="e shopping cart"
 				/>
 			</Link>
-      </div>
-        <input className='emailInput' placeholder='Email'/>
-        <input className='passInput' placeholder='Password'/>
+      </div> */}
+        <input className='emailInput' placeholder='Email' type='text'/>
+        <input className='passInput' placeholder='Password' type='password'/>
         <Link to={"/home"}>
           <button onClick={handleLogIn} className="loginPageBtn">Log In</button>
 				</Link>

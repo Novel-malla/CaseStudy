@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import './Signin.css';
 
+function SignUp(){}
 const Signup = ( ) => {
 
     const handleSignIn = () => {

@@ -33,7 +33,7 @@ function CheckoutProduct({ id, image, title, rating, price }) {
 						))}
 				</p>
 				<button onClick={removeFromBasket}>Remove Item</button>
-				<GooglePayButton
+				{/* <GooglePayButton
   environment="TEST"
   paymentRequest={{
     apiVersion: 2,
@@ -69,7 +69,7 @@ function CheckoutProduct({ id, image, title, rating, price }) {
   onLoadPaymentData={paymentRequest => {
     console.log('load payment data', paymentRequest);
   }}
-/>
+/> */}
 			</div>
 		</div>
 	);
